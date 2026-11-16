@@ -2,21 +2,24 @@
 <html lang="zh-HK">
 <head>
 <meta charset="UTF-8">
-<title>Accounting Demo - Final Version</title>
+<title>Accounting Demo - Final Tight Spacing</title>
 <style>
-    /* ===== 基礎設定 ===== */
+    /* ===== 基礎設定：上下留窄邊，左右保持 ===== */
     body {
         margin: 0;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: #FFCC00; 
         background-image: radial-gradient(circle at center, #FFE55C 0%, #FFCC00 70%);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* 🎯 關鍵修改：上下 padding 只有 15px，左右 40px */
+        padding: 15px 40px; 
+        box-sizing: border-box;
     }
 
-    /* ===== 卡片設計：緊湊排版 ===== */
+    /* ===== 卡片設計 ===== */
     .card {
         background-color: #FFF9E6;
         border: 4px solid #D4AF37;
@@ -29,7 +32,8 @@
             inset 0 0 20px rgba(212, 175, 55, 0.1);
         position: relative;
         overflow: hidden;
-        max-width: 650px; 
+        max-width: 600px; 
+        width: 100%;
         z-index: 1;
     }
 
@@ -61,17 +65,16 @@
         text-shadow: 1px 1px 0px rgba(255,255,255,0.6); 
     }
 
-    /* 🎯 已修改：LEVEL UP YOUR 統一用斜體，顏色加深 */
+    /* LEVEL UP YOUR 統一用斜體 */
     .title .prefix {
         font-size: 0.55em;
         font-weight: 600;
         letter-spacing: 3px;
-        color: #555555; /* 改用深灰色，同 ACCOUNTING 更夾 */
+        color: #555555; 
         text-transform: uppercase;
-        /* font-style: normal; 👈 刪除咗呢句，令佢變斜體 */
         display: block;
         margin-bottom: 6px;
-        opacity: 0.9; /* 提高不透明度 */
+        opacity: 0.9; 
     }
 
     /* ===== 分隔線 ===== */
@@ -225,7 +228,6 @@
 <div class="card">
     <div class="subtitle">EXPERIENCE THE NEO-GAME UI</div>
     
-    <!-- 🎯 兩行字現在都是斜體 -->
     <h1 class="title">
         <span class="prefix">Level Up Your</span>
         <span>ACCOUNTING</span>
@@ -239,7 +241,6 @@
         <span class="play-icon">▶</span> TRY OUR DEMO
     </div>
 
-    <!-- 保留 Privacy 並加上 PRODUCED BY -->
     <div class="legal-note">Built for real businesses. 100% Local Privacy.</div>
     <div class="produced-by">Produced by CIND Accounting</div>
     

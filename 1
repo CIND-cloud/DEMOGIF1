@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Accounting Game Demo - Perfect Theme</title>
+<style>
+    /* ===== 基礎設定：全黃色背景 ===== */
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFCC00; 
+        background-image: radial-gradient(circle at center, #FFE55C 0%, #FFCC00 70%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* ===== 卡片設計：米黃底 + 金邊 ===== */
+    .card {
+        background-color: #FFF9E6;
+        border: 4px solid #D4AF37;
+        border-radius: 28px;
+        padding: 60px 80px;
+        text-align: center;
+        box-shadow: 
+            0 20px 40px rgba(184, 134, 11, 0.25),
+            0 0 0 8px rgba(255, 255, 255, 0.4),
+            inset 0 0 20px rgba(212, 175, 55, 0.1);
+        position: relative;
+        overflow: hidden;
+        max-width: 750px;
+        z-index: 1;
+    }
+
+    /* ===== 頂部小字 ===== */
+    .subtitle {
+        color: #8B6508;
+        letter-spacing: 6px;
+        font-size: 13px;
+        margin-bottom: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    /* ===== 主標題 ===== */
+    .title {
+        color: #4A3B1B;
+        font-size: 46px; /* 🎯 稍微縮細少少，等大寫字唔會逼爆 */
+        margin: 0 0 20px 0;
+        font-weight: 900;
+        letter-spacing: 1px;
+        line-height: 1.2;
+        font-family: 'Georgia', serif;
+    }
+    
+    /* 🎯 ACCOUNTING 字體設定 (斜體 + 左漸右) */
+    .title span {
+        font-style: italic;
+        background: linear-gradient(90deg, #111111 0%, #222222 40%, #8B6508 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 0px rgba(255,255,255,0.6); 
+    }
+
+    /* ===== 分隔線 ===== */
+    .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 25px;
+        color: #B8860B;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .divider::before, .divider::after {
+        content: "";
+        height: 2px;
+        width: 60px;
+        background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        margin: 0 15px;
+    }
+
+    /* ===== 描述文字 ===== */
+    .description {
+        color: #5C4A2B;
+        font-size: 18px;
+        margin-bottom: 40px;
+        line-height: 1.6;
+        max-width: 550px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 600;
+    }
+
+    /* ===== 按鈕 (保持不變) ===== */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #FFCC00; 
+        background-image: linear-gradient(180deg, #FFE55C 0%, #FFCC00 100%);
+        color: #3E2A0C; 
+        font-size: 26px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        padding: 16px 65px;
+        border-radius: 60px;
+        text-decoration: none;
+        position: relative;
+        border: 3px solid #C49A2D; 
+        cursor: pointer;
+        
+        box-shadow: 
+            0 12px 0 #8B6508, 
+            0 20px 30px rgba(139, 101, 8, 0.4),
+            inset 0 -4px 0 rgba(139, 101, 8, 0.2),
+            inset 0 3px 0 rgba(255, 255, 255, 0.6); 
+        
+        animation: floatAndPulse 2s infinite ease-in-out alternate;
+        margin-bottom: 25px;
+        transition: all 0.2s ease;
+    }
+
+    /* 按鈕內部的播放圖標 */
+    .play-icon {
+        background-color: #4A3B1B;
+        color: #FFCC00; 
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 18px;
+        font-size: 18px;
+        padding-left: 3px;
+        
+        animation: iconPulse 1.5s infinite alternate;
+        box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.3);
+    }
+
+    /* ===== 底層資訊 ===== */
+    .legal-note {
+        color: #A08C5A;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+    }
+    
+    .url {
+        color: #4A3B1B;
+        font-weight: 900;
+        letter-spacing: 2px;
+        font-size: 18px;
+        text-decoration: none;
+        border-bottom: 2px solid #D4AF37;
+        padding-bottom: 2px;
+        transition: color 0.3s;
+    }
+    
+    .url:hover {
+        color: #B8860B;
+    }
+
+    /* ===== 動畫定義 ===== */
+    @keyframes floatAndPulse {
+        0% {
+            transform: translateY(0) scale(1);
+            box-shadow: 
+                0 12px 0 #8B6508, 
+                0 20px 30px rgba(139, 101, 8, 0.4),
+                inset 0 -4px 0 rgba(139, 101, 8, 0.2),
+                inset 0 3px 0 rgba(255, 255, 255, 0.6),
+                0 0 15px rgba(255, 204, 0, 0.4);
+        }
+        100% {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 0 #8B6508, 
+                0 30px 40px rgba(139, 101, 8, 0.5),
+                inset 0 -4px 0 rgba(139, 101, 8, 0.2),
+                inset 0 3px 0 rgba(255, 255, 255, 0.6),
+                0 0 30px rgba(255, 204, 0, 0.7); 
+        }
+    }
+
+    @keyframes iconPulse {
+        0% { transform: scale(1); box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.2); }
+        100% { transform: scale(1.1); box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.6), 0 0 10px rgba(255, 204, 0, 0.4); }
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="subtitle">EXPERIENCE THE NEO-GAME UI</div>
+    
+    <!-- 🎯 已將 Accounting 改為全大寫 ACCOUNTING -->
+    <h1 class="title">Level Up Your <span>ACCOUNTING</span></h1>
+    
+    <div class="divider">💰</div>
+    
+    <div class="description">Manage your numbers, grow your business, and experience our accounting system. Try the demo today!</div>
+    
+    <div class="btn">
+        <span class="play-icon">▶</span> TRY OUR DEMO
+    </div>
+    
+    <div class="legal-note">Built for real businesses. 100% Local Privacy.</div>
+    
+    <a href="#" class="url">yourgame.com</a>
+</div>
+
+</body>
+</html>

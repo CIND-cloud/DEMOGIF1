@@ -2,7 +2,7 @@
 <html lang="zh-HK">
 <head>
 <meta charset="UTF-8">
-<title>Accounting Demo - Final Tight Spacing</title>
+<title>Accounting Demo - Full Perfect Version</title>
 <style>
     /* ===== 基礎設定：上下留窄邊，左右保持 ===== */
     body {
@@ -14,8 +14,7 @@
         background-color: #FFCC00; 
         background-image: radial-gradient(circle at center, #FFE55C 0%, #FFCC00 70%);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        /* 🎯 關鍵修改：上下 padding 只有 15px，左右 40px */
-        padding: 15px 40px; 
+        padding: 15px 40px; /* 上下留 15px 窄邊 */
         box-sizing: border-box;
     }
 
@@ -108,7 +107,7 @@
         font-weight: 600;
     }
 
-    /* ===== 高質感按鈕：反光 + 強烈彈跳 ===== */
+    /* ===== 高質感按鈕 ===== */
     .btn {
         display: inline-flex;
         align-items: center;
@@ -137,9 +136,8 @@
         margin-bottom: 25px; 
     }
 
-    /* 反光掃過特效 (Shine) */
-    .btn::after {
-        content: "";
+    /* 🎯 實體反光層：保證錄影軟件 100% 捉得到 */
+    .btn-shine {
         position: absolute;
         top: 0;
         left: -100%;
@@ -148,6 +146,7 @@
         background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
         transform: skewX(-25deg);
         animation: shine 3s infinite; 
+        pointer-events: none; /* 唔會阻擋滑鼠點擊 */
     }
 
     /* 按鈕內部的播放圖標 */
@@ -238,6 +237,8 @@
     <div class="description">Manage your numbers, grow your business, and experience our accounting system. Try the demo today!</div>
     
     <div class="btn">
+        <!-- 🎯 實體反光層加咗入嚟 -->
+        <div class="btn-shine"></div>
         <span class="play-icon">▶</span> TRY OUR DEMO
     </div>
 

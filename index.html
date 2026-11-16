@@ -16,7 +16,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* ===== 卡片設計 ===== */
+    /* ===== 卡片設計：緊湊排版 ===== */
     .card {
         background-color: #FFF9E6;
         border: 4px solid #D4AF37;
@@ -46,23 +46,32 @@
     /* ===== 主標題 ===== */
     .title {
         color: #4A3B1B;
-        font-size: 42px; 
-        margin: 0 0 15px 0;
+        font-size: 46px; 
+        margin: 0 0 20px 0;
         font-weight: 900;
         letter-spacing: 1px;
         line-height: 1.2;
         font-family: 'Georgia', serif;
     }
     
-    /* ACCOUNTING 實淨漸變 */
+    /* ACCOUNTING 字體設定：斜體 + 純灰黑 */
     .title span {
-        font-style: normal; 
-        background: linear-gradient(90deg, #111111 0%, #333333 40%, #8B6508 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 
-            1px 1px 0px rgba(255,255,255,0.8),
-            2px 2px 0px rgba(139, 101, 8, 0.3); 
+        font-style: italic;
+        color: #333333;
+        text-shadow: 1px 1px 0px rgba(255,255,255,0.6); 
+    }
+
+    /* 🎯 已修改：LEVEL UP YOUR 統一用斜體，顏色加深 */
+    .title .prefix {
+        font-size: 0.55em;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: #555555; /* 改用深灰色，同 ACCOUNTING 更夾 */
+        text-transform: uppercase;
+        /* font-style: normal; 👈 刪除咗呢句，令佢變斜體 */
+        display: block;
+        margin-bottom: 6px;
+        opacity: 0.9; /* 提高不透明度 */
     }
 
     /* ===== 分隔線 ===== */
@@ -122,10 +131,10 @@
             inset 0 3px 0 rgba(255, 255, 255, 0.7); 
         
         animation: strongBounce 1.5s infinite ease-in-out alternate;
-        margin-bottom: 25px; /* 保留底部空間 */
+        margin-bottom: 25px; 
     }
 
-    /* 反光掃過特效 */
+    /* 反光掃過特效 (Shine) */
     .btn::after {
         content: "";
         position: absolute;
@@ -166,7 +175,7 @@
         text-transform: uppercase;
     }
     
-    /* 🎯 新增：Producer 聲明 */
+    /* Producer 聲明 */
     .produced-by {
         color: #8B6508;
         font-size: 12px;
@@ -216,7 +225,11 @@
 <div class="card">
     <div class="subtitle">EXPERIENCE THE NEO-GAME UI</div>
     
-    <h1 class="title">Level Up Your <br><span>ACCOUNTING</span></h1>
+    <!-- 🎯 兩行字現在都是斜體 -->
+    <h1 class="title">
+        <span class="prefix">Level Up Your</span>
+        <span>ACCOUNTING</span>
+    </h1>
     
     <div class="divider">💰</div>
     
@@ -226,7 +239,7 @@
         <span class="play-icon">▶</span> TRY OUR DEMO
     </div>
 
-    <!-- 🎯 已保留 Privacy 並加上 PRODUCED BY -->
+    <!-- 保留 Privacy 並加上 PRODUCED BY -->
     <div class="legal-note">Built for real businesses. 100% Local Privacy.</div>
     <div class="produced-by">Produced by CIND Accounting</div>
     

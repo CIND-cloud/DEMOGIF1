@@ -9,7 +9,6 @@
             padding: 0;
             background-color: transparent;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* 讓 body 剛好包覆內容 */
             display: flex;
             width: max-content;
             height: max-content;
@@ -20,24 +19,22 @@
             box-sizing: border-box;
         }
 
-        /* 外層黃色圓角外框，完美貼合內部卡片 */
         .cind-demo-wrapper {
             background-color: #FFCC00; 
             background-image: radial-gradient(circle at center, #FFE55C 0%, #FFCC00 70%);
-            padding: 12px; /* 用 padding 讓黃色透出來，取代 margin */
+            padding: 12px;
             border-radius: 36px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            /* 陰影已完全移除 */
             display: flex;
         }
 
-        /* 核心卡片，寬度 600px */
         .cind-demo-card {
             background-color: #FFF9E6;
             border: 4px solid #D4AF37;
             border-radius: 24px; 
             padding: 40px 50px; 
             text-align: center;
-            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
+            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1); /* 內陰影保留不影響外框 */
             position: relative;
             overflow: hidden;
             width: 600px;
@@ -140,6 +137,7 @@
             border: 3px solid #C49A2D; 
             cursor: pointer;
             overflow: hidden; 
+            /* 按鈕本身的彈跳陰影保留，這是在卡片內部的 */
             box-shadow: 0 10px 0 #8B6508, 0 20px 25px rgba(139, 101, 8, 0.4), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.7); 
             animation: cindStrongBounce 1.5s infinite ease-in-out alternate;
             margin-bottom: 20px;

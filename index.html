@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>Accounting Demo - CIND</title>
+    <title>Accounting Demo - Perfect Centered</title>
     <style>
         body {
             margin: 0;
@@ -130,4 +130,146 @@
             font-size: 22px; 
             font-weight: 900;
             letter-spacing: 2px;
-            padding: 14px 50px;
+            padding: 14px 50px; 
+            border-radius: 60px;
+            text-decoration: none;
+            position: relative;
+            border: 3px solid #C49A2D; 
+            cursor: pointer;
+            overflow: hidden; 
+            box-shadow: 0 10px 0 #8B6508, 0 20px 25px rgba(139, 101, 8, 0.4), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.7); 
+            animation: cindStrongBounce 1.5s infinite ease-in-out alternate;
+            margin-bottom: 20px;
+        }
+
+        .cind-demo-btn-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: cindShine 3s infinite; 
+            pointer-events: none; 
+        }
+
+        .cind-demo-play-icon {
+            background-color: #4A3B1B;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            animation: cindIconPulse 1.5s infinite alternate;
+            box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.3);
+        }
+
+        .cind-demo-triangle {
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 11px solid #FFCC00;
+            margin-left: 3px;
+        }
+
+        .cind-demo-slogan {
+            color: #8B6508;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .cind-demo-divider-small {
+            height: 1px;
+            width: 40%;
+            margin: 15px auto;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            opacity: 0.6;
+        }
+
+        .cind-demo-feature-note {
+            color: #B8860B; 
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .cind-demo-produced-by {
+            color: #8B6508;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        @keyframes cindStrongBounce {
+            0% {
+                transform: translateY(0) scale(1);
+                box-shadow: 0 10px 0 #8B6508, 0 15px 15px rgba(139, 101, 8, 0.4), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 204, 0, 0.2);
+            }
+            100% {
+                transform: translateY(-12px) scale(1.08); 
+                box-shadow: 0 22px 0 #8B6508, 0 30px 35px rgba(139, 101, 8, 0.5), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 204, 0, 0.8); 
+            }
+        }
+
+        @keyframes cindShine {
+            0% { left: -100%; }
+            20% { left: 100%; } 
+            100% { left: 100%; } 
+        }
+
+        @keyframes cindIconPulse {
+            0% { transform: scale(1); box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.2); }
+            100% { transform: scale(1.15); box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.6); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cind-demo-wrapper">
+    <div class="cind-demo-card">
+        <div class="cind-demo-subtitle">EXPERIENCE THE NEO-GAME UI</div>
+        
+        <div class="cind-demo-title">
+            <span class="cind-demo-prefix">Level Up Your</span>
+            <span>ACCOUNTING</span>
+        </div>
+        
+        <div class="cind-demo-divider">
+            <div class="cind-demo-coin">$</div>
+        </div>
+        
+        <div class="cind-demo-description">
+            Manage your numbers, grow your business, and experience our accounting system. Try the demo today!
+        </div>
+        
+        <div class="cind-demo-btn">
+            <div class="cind-demo-btn-shine"></div>
+            <span class="cind-demo-play-icon">
+                <span class="cind-demo-triangle"></span>
+            </span>
+            TRY THE DEMO
+        </div>
+
+        <div class="cind-demo-slogan">Built for real businesses. Your best accounting assistant.</div>
+
+        <div class="cind-demo-divider-small"></div>
+
+        <div class="cind-demo-feature-note">Demo excludes: JSON/Excel Import/Export & Local Storage</div>
+        
+        <div class="cind-demo-produced-by">Produced by CIND Accounting</div>
+    </div>
+</div>
+
+</body>
+</html>

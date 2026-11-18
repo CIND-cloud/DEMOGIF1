@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-HK">
-<head>
-<meta charset="UTF-8">
-<title>Accounting Demo - Perfect Fit</title>
 <style>
-    /* ===== 基礎設定：取消全螢幕背景，改為黑色/透明方便錄影 ===== */
-    body {
-        margin: 0;
-        height: 100vh;
+    /* ===== 基礎容器：取代原本的 body 設定，負責置中 ===== */
+    .cind-demo-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        /* 🎯 背景完全透明 */
-        background-color: transparent; 
+        padding: 40px 20px; /* 預留上下左右空間，防止按鈕跳動時被切掉 */
+        background-color: transparent;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-sizing: border-box;
     }
 
-    /* 🎯 新增：完美包住卡片嘅黃色底框 (大約 1cm 闊) */
-    .yellow-wrapper {
+    .cind-demo-container * {
+        box-sizing: border-box;
+    }
+
+    /* ===== 黃色底框 (大約 1cm 闊) ===== */
+    .cind-demo-wrapper {
         background-color: #FFCC00; 
         background-image: radial-gradient(circle at center, #FFE55C 0%, #FFCC00 70%);
-        /* 呢個 padding 就係你講嘅「1cm 黃底」，大約 30px */
         padding: 30px; 
-        border-radius: 36px; /* 圓角要大過卡片少少 */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* 加個陰影令佢浮起 */
+        border-radius: 36px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        max-width: 100%;
     }
 
     /* ===== 卡片設計 ===== */
-    .card {
+    .cind-demo-card {
         background-color: #FFF9E6;
         border: 4px solid #D4AF37;
         border-radius: 24px; 
@@ -36,12 +34,13 @@
         box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
         position: relative;
         overflow: hidden;
-        width: 600px; /* 固定闊度，確保比例完美 */
+        width: 600px;
+        max-width: 100%; /* 確保在手機或窄螢幕不會破版 */
         z-index: 1;
     }
 
     /* ===== 頂部小字 ===== */
-    .subtitle {
+    .cind-demo-subtitle {
         color: #8B6508;
         letter-spacing: 5px;
         font-size: 12px;
@@ -51,7 +50,7 @@
     }
 
     /* ===== 主標題 ===== */
-    .title {
+    .cind-demo-title {
         color: #4A3B1B;
         font-size: 46px; 
         margin: 0 0 20px 0;
@@ -61,13 +60,13 @@
         font-family: 'Georgia', serif;
     }
     
-    .title span {
+    .cind-demo-title span {
         font-style: italic;
         color: #333333;
         text-shadow: 1px 1px 0px rgba(255,255,255,0.6); 
     }
 
-    .title .prefix {
+    .cind-demo-title .cind-demo-prefix {
         font-size: 0.55em;
         font-weight: 600;
         letter-spacing: 3px;
@@ -76,10 +75,11 @@
         display: block;
         margin-bottom: 6px;
         opacity: 0.9; 
+        font-style: normal;
     }
 
     /* ===== 主分隔線 (金幣) ===== */
-    .divider {
+    .cind-demo-divider {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -89,7 +89,7 @@
         font-weight: bold;
     }
     
-    .divider::before, .divider::after {
+    .cind-demo-divider::before, .cind-demo-divider::after {
         content: "";
         height: 2px;
         width: 50px;
@@ -98,7 +98,7 @@
     }
 
     /* ===== 描述文字 ===== */
-    .description {
+    .cind-demo-description {
         color: #5C4A2B;
         font-size: 16px; 
         margin-bottom: 30px; 
@@ -110,7 +110,7 @@
     }
 
     /* ===== 高質感按鈕 ===== */
-    .btn {
+    .cind-demo-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -128,11 +128,11 @@
         cursor: pointer;
         overflow: hidden; 
         box-shadow: 0 10px 0 #8B6508, 0 20px 25px rgba(139, 101, 8, 0.4), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.7); 
-        animation: strongBounce 1.5s infinite ease-in-out alternate;
+        animation: cindStrongBounce 1.5s infinite ease-in-out alternate;
         margin-bottom: 20px;
     }
 
-    .btn-shine {
+    .cind-demo-btn-shine {
         position: absolute;
         top: 0;
         left: -100%;
@@ -140,11 +140,11 @@
         height: 100%;
         background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
         transform: skewX(-25deg);
-        animation: shine 3s infinite; 
+        animation: cindShine 3s infinite; 
         pointer-events: none; 
     }
 
-    .play-icon {
+    .cind-demo-play-icon {
         background-color: #4A3B1B;
         color: #FFCC00; 
         border-radius: 50%;
@@ -156,12 +156,12 @@
         margin-right: 12px;
         font-size: 14px;
         padding-left: 2px;
-        animation: iconPulse 1.5s infinite alternate;
+        animation: cindIconPulse 1.5s infinite alternate;
         box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.3);
     }
 
     /* ===== 底部資訊區 ===== */
-    .slogan {
+    .cind-demo-slogan {
         color: #8B6508;
         font-size: 13px;
         font-weight: 700;
@@ -170,7 +170,7 @@
         font-style: italic;
     }
 
-    .divider-small {
+    .cind-demo-divider-small {
         height: 1px;
         width: 40%;
         margin: 15px auto;
@@ -178,7 +178,7 @@
         opacity: 0.6;
     }
 
-    .feature-note {
+    .cind-demo-feature-note {
         color: #B8860B; 
         font-size: 11px;
         font-weight: 900;
@@ -187,7 +187,7 @@
         text-transform: uppercase;
     }
     
-    .produced-by {
+    .cind-demo-produced-by {
         color: #8B6508;
         font-size: 11px;
         font-weight: 800;
@@ -196,7 +196,7 @@
         opacity: 0.8;
     }
 
-    @keyframes strongBounce {
+    @keyframes cindStrongBounce {
         0% {
             transform: translateY(0) scale(1);
             box-shadow: 0 10px 0 #8B6508, 0 15px 15px rgba(139, 101, 8, 0.4), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 204, 0, 0.2);
@@ -207,50 +207,46 @@
         }
     }
 
-    @keyframes shine {
+    @keyframes cindShine {
         0% { left: -100%; }
         20% { left: 100%; } 
         100% { left: 100%; } 
     }
 
-    @keyframes iconPulse {
+    @keyframes cindIconPulse {
         0% { transform: scale(1); box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.2); }
         100% { transform: scale(1.15); box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.6); }
     }
 </style>
-</head>
-<body>
 
-<!-- 🎯 用黃色外框包住卡片 -->
-<div class="yellow-wrapper">
-    <div class="card">
-        <div class="subtitle">EXPERIENCE THE NEO-GAME UI</div>
-        
-        <h1 class="title">
-            <span class="prefix">Level Up Your</span>
-            <span>ACCOUNTING</span>
-        </h1>
-        
-        <div class="divider">💰</div>
-        
-        <div class="description">
-            Manage your numbers, grow your business, and experience our accounting system. Try the demo today!
+<div class="cind-demo-container">
+    <div class="cind-demo-wrapper">
+        <div class="cind-demo-card">
+            <div class="cind-demo-subtitle">EXPERIENCE THE NEO-GAME UI</div>
+            
+            <div class="cind-demo-title">
+                <span class="cind-demo-prefix">Level Up Your</span>
+                <span>ACCOUNTING</span>
+            </div>
+            
+            <div class="cind-demo-divider">💰</div>
+            
+            <div class="cind-demo-description">
+                Manage your numbers, grow your business, and experience our accounting system. Try the demo today!
+            </div>
+            
+            <div class="cind-demo-btn">
+                <div class="cind-demo-btn-shine"></div>
+                <span class="cind-demo-play-icon">▶</span> TRY THE DEMO
+            </div>
+
+            <div class="cind-demo-slogan">Built for real businesses. Your best accounting assistant.</div>
+
+            <div class="cind-demo-divider-small"></div>
+
+            <div class="cind-demo-feature-note">Demo excludes: JSON/Excel Import/Export & Local Storage</div>
+            
+            <div class="cind-demo-produced-by">Produced by CIND Accounting</div>
         </div>
-        
-        <div class="btn">
-            <div class="btn-shine"></div>
-            <span class="play-icon">▶</span> TRY THE DEMO
-        </div>
-
-        <div class="slogan">Built for real businesses. Your best accounting assistant.</div>
-
-        <div class="divider-small"></div>
-
-        <div class="feature-note">Demo excludes: JSON/Excel Import/Export & Local Storage</div>
-        
-        <div class="produced-by">Produced by CIND Accounting</div>
     </div>
 </div>
-
-</body>
-</html>

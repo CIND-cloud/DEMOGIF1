@@ -1,19 +1,18 @@
 <style>
-    /* 將外層重置，讓它獨立運作 */
-    .cind-demo-wrapper {
-        display: flex;
-        margin: 0;
-        padding: 12px;
-        background-color: #FFCC00; 
-        background-image: radial-gradient(circle at center, #FFE55C 0%, #FFCC00 70%);
-        border-radius: 36px;
-        width: max-content;
+    * {
         box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
-    .cind-demo-wrapper * {
-        box-sizing: border-box;
+    /* 這是你的黃色外框，它現在會根據內容自動撐開 */
+    .cind-demo-wrapper {
+        background-color: #FFCC00; 
+        background-image: radial-gradient(circle at center, #FFE55C 0%, #FFCC00 70%);
+        padding: 12px;
+        border-radius: 36px;
+        display: inline-block; /* 確保它只有內容那麼大 */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .cind-demo-card {
@@ -199,8 +198,14 @@
     }
 
     @keyframes cindStrongBounce {
-        0% { transform: translateY(0) scale(1); }
-        100% { transform: translateY(-12px) scale(1.08); }
+        0% {
+            transform: translateY(0) scale(1);
+            box-shadow: 0 10px 0 #8B6508, 0 15px 15px rgba(139, 101, 8, 0.4), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 204, 0, 0.2);
+        }
+        100% {
+            transform: translateY(-12px) scale(1.08); 
+            box-shadow: 0 22px 0 #8B6508, 0 30px 35px rgba(139, 101, 8, 0.5), inset 0 -4px 0 rgba(139, 101, 8, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 204, 0, 0.8); 
+        }
     }
 
     @keyframes cindShine {
@@ -210,12 +215,11 @@
     }
 
     @keyframes cindIconPulse {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.15); }
+        0% { transform: scale(1); box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.2); }
+        100% { transform: scale(1.15); box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.6); }
     }
 </style>
 
-<!-- 核心元件，沒有 html/body 標籤 -->
 <div class="cind-demo-wrapper">
     <div class="cind-demo-card">
         <div class="cind-demo-subtitle">EXPERIENCE THE NEO-GAME UI</div>

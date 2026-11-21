@@ -12,6 +12,7 @@
     --white: #FFF; 
     --green: #00E676; 
     --blue: #3B82F6;
+    --red: #FF3B30; /* 👈 新增紅色變數 */
     --font-sans: 'Space Grotesk', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --border: 5px solid var(--black);
@@ -106,7 +107,8 @@
 
   .card-price {
     display: inline-block;
-    background: var(--blue);
+    /* 👇 將背景由 var(--blue) 轉做 var(--red) */
+    background: var(--red);
     color: #fff;
     font-family: var(--font-mono);
     font-size: 48px;
@@ -135,13 +137,13 @@
     <div class="card-banner">⭐ FEATURED TIER</div>
     
     <div class="card-content">
-      <!-- 👇 已經轉咗做火箭 🚀 -->
       <div class="top-emoji">🚀</div>
       
       <div class="card-title">Early Bird</div>
       
       <p class="card-desc">1-Year Full Access and Your Name on our Supporter Wall 👑 as one of our first members.</p>
       
+      <!-- 呢個掣而家會變紅色 -->
       <div class="card-price">$79</div>
       
       <p class="disclaimer">

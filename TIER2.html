@@ -21,12 +21,13 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: #e5e5e5; 
+    background: var(--white); 
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 40px;
+    margin: 0;
+    padding: 30px;
   }
 
   .kickstarter-card {
@@ -71,6 +72,8 @@
     margin-bottom: 10px;
     filter: drop-shadow(2px 4px 0 rgba(0,0,0,0.15));
     animation: float 3s ease-in-out infinite;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    line-height: 1;
   }
 
   @keyframes float {
@@ -116,20 +119,34 @@
     z-index: 1;
   }
 
+  .disclaimer {
+    font-size: 14px;
+    color: #666;
+    margin-top: 25px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
 </style>
 </head>
 <body>
 
   <div class="kickstarter-card">
-    <div class="card-banner">⭐ Featured Tier</div>
+    <div class="card-banner">⭐ FEATURED TIER</div>
     
     <div class="card-content">
       <div class="top-emoji">🌕</div>
       
-      <div class="card-title">Founding Member</div>
-      <p class="card-desc">1-Year Full Access and your name on our Supporter Wall (👑) that proves you were here first.</p>
+      <div class="card-title">Early Supporter</div>
+      
+      <p class="card-desc">1-Year Full Access and Your Name on our Supporter Wall 👑 as one of our first members.</p>
       
       <div class="card-price">$99</div>
+      
+      <!-- 👇 只保留匯率聲明 -->
+      <p class="disclaimer">
+        * Shown amount may vary slightly due to exchange rates.
+      </p>
     </div>
   </div>
 

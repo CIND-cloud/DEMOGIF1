@@ -20,13 +20,15 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* 背景設為白色，留 30px padding 畀個 Card 嘅 Shadow 唔好被切斷 */
   body {
-    background: #e5e5e5; 
+    background: var(--white); 
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 40px;
+    margin: 0;
+    padding: 30px;
   }
 
   .kickstarter-card {
@@ -66,13 +68,14 @@
     position: relative;
   }
 
-    .top-emoji {
+  /* Emoji 設定：強制使用系統 Emoji 字體，確保無頭瀏覽器都畫到 */
+  .top-emoji {
     font-size: 70px;
     margin-bottom: 10px;
     filter: drop-shadow(2px 4px 0 rgba(0,0,0,0.15));
     animation: float 3s ease-in-out infinite;
     
-    /* 👇 加呢兩句！強制瀏覽器用 Emoji 字體 */
+    /* 👇 強制顯示彩色 Emoji */
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
     line-height: 1;
   }

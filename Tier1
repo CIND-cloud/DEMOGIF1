@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIND Kickstarter Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFE156; 
+    --black: #0D0D0D; 
+    --white: #FFF; 
+    --green: #00E676; 
+    --blue: #3B82F6;
+    --red: #FF3B30; /* 👈 新增紅色變數 */
+    --font-sans: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --border: 5px solid var(--black);
+    --shadow: 10px 10px 0 0 var(--black);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--white); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+  }
+
+  .kickstarter-card {
+    background: var(--white);
+    width: 900px;
+    height: 600px;
+    border: var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-banner {
+    background: var(--yellow);
+    color: var(--black);
+    text-align: center;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: var(--border);
+    font-family: var(--font-sans);
+  }
+
+  .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 60px 30px 60px;
+    position: relative;
+  }
+
+  .top-emoji {
+    font-size: 70px;
+    margin-bottom: 10px;
+    filter: drop-shadow(2px 4px 0 rgba(0,0,0,0.15));
+    animation: float 3s ease-in-out infinite;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    line-height: 1;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .card-title {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--black);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-desc {
+    font-size: 22px;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    max-width: 650px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-price {
+    display: inline-block;
+    /* 👇 將背景由 var(--blue) 轉做 var(--red) */
+    background: var(--red);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 48px;
+    font-weight: 800;
+    padding: 12px 48px;
+    border: 4px solid var(--black);
+    border-radius: 16px;
+    box-shadow: 6px 6px 0 0 var(--black);
+    position: relative;
+    z-index: 1;
+  }
+
+  .disclaimer {
+    font-size: 14px;
+    color: #666;
+    margin-top: 25px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+</style>
+</head>
+<body>
+
+  <div class="kickstarter-card">
+    <div class="card-banner">⭐ FEATURED TIER</div>
+    
+    <div class="card-content">
+      <div class="top-emoji">🚀</div>
+      
+      <div class="card-title">Early Bird</div>
+      
+      <p class="card-desc">1-Year Full Access and Your Name on our Supporter Wall 👑 as one of our first members.</p>
+      
+      <!-- 呢個掣而家會變紅色 -->
+      <div class="card-price">$79</div>
+      
+      <p class="disclaimer">
+        * Shown amount may vary slightly due to exchange rates.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

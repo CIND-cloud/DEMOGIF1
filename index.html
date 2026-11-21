@@ -20,7 +20,6 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* 背景設為白色，留 30px padding 畀個 Card 嘅 Shadow 唔好被切斷 */
   body {
     background: var(--white); 
     display: flex;
@@ -68,14 +67,11 @@
     position: relative;
   }
 
-  /* Emoji 設定：強制使用系統 Emoji 字體，確保無頭瀏覽器都畫到 */
   .top-emoji {
     font-size: 70px;
     margin-bottom: 10px;
     filter: drop-shadow(2px 4px 0 rgba(0,0,0,0.15));
     animation: float 3s ease-in-out infinite;
-    
-    /* 👇 強制顯示彩色 Emoji */
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
     line-height: 1;
   }
@@ -123,20 +119,33 @@
     z-index: 1;
   }
 
+  .disclaimer {
+    font-size: 13px;
+    color: #888;
+    margin-top: 25px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
 </style>
 </head>
 <body>
 
   <div class="kickstarter-card">
-    <div class="card-banner">⭐ Featured Tier</div>
+    <div class="card-banner">⭐ FEATURED TIER</div>
     
     <div class="card-content">
+      <!-- 保留最愛嘅月亮 -->
       <div class="top-emoji">🌕</div>
       
-      <div class="card-title">Founding Member</div>
-      <p class="card-desc">1-Year Full Access and your name on our Supporter Wall (👑) that proves you were here first.</p>
+      <!-- 👇 已經改做 Early Supporter -->
+      <div class="card-title">Early Supporter</div>
+      
+      <p class="card-desc">Get <strong>1-Year Full Access</strong> to our web platform. Your name will be permanently featured on our Supporter Wall (👑) as one of our first members.</p>
       
       <div class="card-price">$99</div>
+      
+      <p class="disclaimer">* Early Access: Web platform features are actively being developed.</p>
     </div>
   </div>
 

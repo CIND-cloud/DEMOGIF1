@@ -66,11 +66,15 @@
     position: relative;
   }
 
-  .top-emoji {
+    .top-emoji {
     font-size: 70px;
     margin-bottom: 10px;
     filter: drop-shadow(2px 4px 0 rgba(0,0,0,0.15));
     animation: float 3s ease-in-out infinite;
+    
+    /* 👇 加呢兩句！強制瀏覽器用 Emoji 字體 */
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    line-height: 1;
   }
 
   @keyframes float {

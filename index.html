@@ -10,10 +10,7 @@
     --yellow: #FFE156; 
     --black: #0D0D0D; 
     --white: #FFF; 
-    --green: #00E676; 
-    --blue: #3B82F6;
-    --red: #FF3B30;
-    --orange: #FF8C00; /* 👈 高亮橙色 */
+    --green: #00E676; /* 👈 用綠色代表 Founder */
     --font-sans: 'Space Grotesk', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --border: 5px solid var(--black);
@@ -85,7 +82,7 @@
   }
 
   .card-title {
-    font-size: 64px;
+    font-size: 56px;
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -1.5px;
@@ -108,9 +105,9 @@
 
   .card-price {
     display: inline-block;
-    /* 👇 轉用高亮橙色 */
-    background: var(--orange);
-    color: #fff;
+    /* 👇 綠色價錢牌 */
+    background: var(--green);
+    color: var(--black); /* 綠色配黑字最清楚 */
     font-family: var(--font-mono);
     font-size: 48px;
     font-weight: 800;
@@ -135,21 +132,21 @@
 <body>
 
   <div class="kickstarter-card">
-    <!-- Banner 改咗做 Premium Backer -->
-    <div class="card-banner">⭐ PREMIUM BACKER</div>
+    <!-- Banner 改咗做 Founding Supporter -->
+    <div class="card-banner">👑 FOUNDING SUPPORTER</div>
     
     <div class="card-content">
-      <!-- 轉用金幣 Emoji 代表 Premium 級別 -->
-      <div class="top-emoji">🪙</div>
+      <!-- 鑽石 Emoji -->
+      <div class="top-emoji">💎</div>
       
-      <!-- 標題改做 Premium Backer -->
-      <div class="card-title">Premium Backer</div>
+      <!-- 標題改做 Founding Supporter -->
+      <div class="card-title">Founding Supporter</div>
       
-      <!-- 文案改為 Premium 專屬：Backer Wall + 實體禮物 -->
-      <p class="card-desc">1-Year Full Access, Your Name on the Backer Wall 👑🪙, and 1 Physical Thank-you Gift.</p>
+      <!-- 文案改為 3-Year + Wall of Love + 3 Gifts -->
+      <p class="card-desc">3-Year Full Access, Your Name on the Wall of Love 👑💎, and 3 Physical Thank-you Gifts.</p>
       
-      <!-- 價錢改做 $129 -->
-      <div class="card-price">$129</div>
+      <!-- 價錢改做 $299 -->
+      <div class="card-price">$299</div>
       
       <p class="disclaimer">
         * Shown amount may vary slightly due to exchange rates.

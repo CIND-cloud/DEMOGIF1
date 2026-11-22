@@ -12,7 +12,8 @@
     --white: #FFF; 
     --green: #00E676; 
     --blue: #3B82F6;
-    --red: #FF3B30; /* 👈 新增紅色變數 */
+    --red: #FF3B30;
+    --orange: #FF8C00; /* 👈 高亮橙色 */
     --font-sans: 'Space Grotesk', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --border: 5px solid var(--black);
@@ -107,8 +108,8 @@
 
   .card-price {
     display: inline-block;
-    /* 👇 將背景由 var(--blue) 轉做 var(--red) */
-    background: var(--red);
+    /* 👇 轉用高亮橙色 */
+    background: var(--orange);
     color: #fff;
     font-family: var(--font-mono);
     font-size: 48px;
@@ -134,17 +135,21 @@
 <body>
 
   <div class="kickstarter-card">
-    <div class="card-banner">⭐ FEATURED TIER</div>
+    <!-- Banner 改咗做 Premium Backer -->
+    <div class="card-banner">⭐ PREMIUM BACKER</div>
     
     <div class="card-content">
-      <div class="top-emoji">🚀</div>
+      <!-- 轉用金幣 Emoji 代表 Premium 級別 -->
+      <div class="top-emoji">🪙</div>
       
-      <div class="card-title">Early Bird</div>
+      <!-- 標題改做 Premium Backer -->
+      <div class="card-title">Premium Backer</div>
       
-      <p class="card-desc">1-Year Full Access and Your Name on our Supporter Wall 👑 as one of our first members.</p>
+      <!-- 文案改為 Premium 專屬：Backer Wall + 實體禮物 -->
+      <p class="card-desc">1-Year Full Access, Your Name on the Backer Wall 👑🪙, and 1 Physical Thank-you Gift.</p>
       
-      <!-- 呢個掣而家會變紅色 -->
-      <div class="card-price">$79</div>
+      <!-- 價錢改做 $129 -->
+      <div class="card-price">$129</div>
       
       <p class="disclaimer">
         * Shown amount may vary slightly due to exchange rates.

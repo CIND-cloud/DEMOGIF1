@@ -3,156 +3,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CIND Kickstarter Cover</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+<title>CIND Backer Tiers & Rewards</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --yellow: #FFE156; 
+    --bg: #F8FAFC; 
+    --card-bg: #FFFFFF;
     --black: #0D0D0D; 
-    --white: #FFF; 
-    --green: #00E676; /* 👈 用綠色代表 Founder */
-    --font-sans: 'Space Grotesk', system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --border: 5px solid var(--black);
-    --shadow: 10px 10px 0 0 var(--black);
+    --grey-text: #64748B;
+    
+    /* Tier Colors */
+    --tier1: #94A3B8; /* Grey */
+    --tier2: #F5D000; /* Gold */
+    --tier3: #FF8C00; /* Orange */
+    --tier4: #00E676; /* Green */
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', system-ui, sans-serif; background: var(--bg); padding: 40px 20px; display: flex; justify-content: center; }
+  .container { width: 100%; max-width: 600px; }
 
-  body {
-    background: var(--white); 
+  .header-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    color: #1E3A8A;
+    margin-bottom: 30px;
+    background: #E0E7FF;
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .tier-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    border: 1px solid #E2E8F0;
+    display: flex;
+    gap: 16px;
+    position: relative;
+  }
+
+  /* 左邊價錢牌 */
+  .price-tag {
+    width: 70px;
+    height: 36px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 30px;
+    font-weight: 800;
+    font-size: 18px;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 4px;
   }
 
-  .kickstarter-card {
-    background: var(--white);
-    width: 900px;
-    height: 600px;
-    border: var(--border);
-    border-radius: 24px;
-    box-shadow: var(--shadow);
+  /* 唔同 Tier 嘅專屬顏色 */
+  .t1 { background: var(--tier1); color: var(--black); }
+  .t2 { background: var(--tier2); color: var(--black); }
+  .t3 { background: var(--tier3); color: var(--black); }
+  .t4 { background: var(--tier4); color: var(--black); }
+
+  .content {
+    flex: 1;
+  }
+
+  .title-row {
     display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
   }
 
-  .card-banner {
-    background: var(--yellow);
-    color: var(--black);
-    text-align: center;
-    padding: 20px;
+  .tier-title {
     font-size: 22px;
     font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-bottom: var(--border);
-    font-family: var(--font-sans);
+    color: #1E293B;
   }
 
-  .card-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 60px 30px 60px;
-    position: relative;
-  }
-
-  .top-emoji {
-    font-size: 70px;
-    margin-bottom: 10px;
-    filter: drop-shadow(2px 4px 0 rgba(0,0,0,0.15));
-    animation: float 3s ease-in-out infinite;
-    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  /* 右上角 Icon (靜態，無動畫) */
+  .tier-icon {
+    font-size: 32px;
     line-height: 1;
   }
 
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-  }
-
-  .card-title {
-    font-size: 56px;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -1.5px;
-    color: var(--black);
-    margin-bottom: 16px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .card-desc {
-    font-size: 22px;
-    color: #333;
-    font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 40px;
-    max-width: 650px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .card-price {
+  .tag {
     display: inline-block;
-    /* 👇 綠色價錢牌 */
-    background: var(--green);
-    color: var(--black); /* 綠色配黑字最清楚 */
-    font-family: var(--font-mono);
-    font-size: 48px;
+    padding: 2px 8px;
+    font-size: 11px;
     font-weight: 800;
-    padding: 12px 48px;
-    border: 4px solid var(--black);
-    border-radius: 16px;
-    box-shadow: 6px 6px 0 0 var(--black);
-    position: relative;
-    z-index: 1;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
   }
+  .tag-t1 { background: #F1F5F9; color: var(--black); border: 1px solid #CBD5E1; }
+  .tag-t2 { background: #FEF9C3; color: var(--black); border: 1px solid #FDE047; }
+  .tag-t3 { background: #FFEDD5; color: var(--black); border: 1px solid #FDBA74; }
+  .tag-t4 { background: #DCFCE7; color: var(--black); border: 1px solid #86EFAC; }
 
-  .disclaimer {
+  .desc {
     font-size: 14px;
-    color: #666;
-    margin-top: 25px;
-    font-family: var(--font-sans);
+    color: var(--grey-text);
+    margin-bottom: 12px;
+    line-height: 1.5;
     font-weight: 500;
   }
 
+  .features-list {
+    list-style: none;
+  }
+
+  .features-list li {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .features-list li::before {
+    content: '✔';
+    color: #3B82F6;
+    font-weight: 900;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* Include 特別嘅 Highlight 底色 */
+  .highlight {
+    background: rgba(59, 130, 246, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border-left: 3px solid #3B82F6;
+  }
 </style>
 </head>
 <body>
 
-  <div class="kickstarter-card">
-    <!-- Banner 改咗做 Founding Supporter -->
-    <div class="card-banner">👑 FOUNDING SUPPORTER</div>
-    
-    <div class="card-content">
-      <!-- 鑽石 Emoji -->
-      <div class="top-emoji">💎</div>
-      
-      <!-- 標題改做 Founding Supporter -->
-      <div class="card-title">Founding Supporter</div>
-      
-      <!-- 文案改為 3-Year + Wall of Love + 3 Gifts -->
-      <p class="card-desc">3-Year Full Access, Your Name on the Wall of Love 👑💎, and 3 Physical Thank-you Gifts.</p>
-      
-      <!-- 價錢改做 $299 -->
-      <div class="card-price">$299</div>
-      
-      <p class="disclaimer">
-        * Shown amount may vary slightly due to exchange rates.
-      </p>
+<div class="container">
+  <div class="header-title">Backer Tiers & Rewards</div>
+
+  <!-- Tier 1: Early Bird -->
+  <div class="tier-card">
+    <div class="price-tag t1">$79</div>
+    <div class="content">
+      <div class="title-row">
+        <div class="tier-title">Early Bird</div>
+        <div class="tier-icon">⏰</div>
+      </div>
+      <div class="tag tag-t1">⭐ Early Bird</div>
+      <p class="desc">Lock in the lowest price for a full year of CIND.</p>
+      <ul class="features-list">
+        <li>1-Year Full Access to the Neo-Game UI</li>
+        <li>Full Double-Entry Bookkeeping Engine</li>
+        <li>Local Data Ownership & Export</li>
+        <li><span class="highlight">Name on Supporter Wall 👑</span></li>
+        <li style="color: #94A3B8; font-style: italic;">(Digital Access Only)</li>
+      </ul>
     </div>
   </div>
+
+  <!-- Tier 2: Early Supporter -->
+  <div class="tier-card">
+    <div class="price-tag t2">$99</div>
+    <div class="content">
+      <div class="title-row">
+        <div class="tier-title">Early Supporter</div>
+        <div class="tier-icon">🚀</div>
+      </div>
+      <div class="tag tag-t2">🔥 Most Popular</div>
+      <p class="desc">The perfect choice for consistent bookkeeping.</p>
+      <ul class="features-list">
+        <li>1-Year Full Access to the Neo-Game UI</li>
+        <li>All Core Features Included</li>
+        <li><span class="highlight">Name on Supporter Wall 👑</span></li>
+        <li style="color: #94A3B8; font-style: italic;">(Digital Access Only)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tier 3: Premium Backer -->
+  <div class="tier-card">
+    <div class="price-tag t3">$129</div>
+    <div class="content">
+      <div class="title-row">
+        <div class="tier-title">Premium Backer</div>
+        <div class="tier-icon">🪙</div>
+      </div>
+      <div class="tag tag-t3">💎 Best Value</div>
+      <p class="desc">Elevate your bookkeeping with exclusive physical rewards.</p>
+      <ul class="features-list">
+        <li>1-Year Full Access to the Neo-Game UI</li>
+        <li>All Core Features Included</li>
+        <li><span class="highlight">Name on Backer Wall 👑🪙</span></li>
+        <li>1 Physical Thank-you Gift</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tier 4: Ultimate Founder -->
+  <div class="tier-card">
+    <div class="price-tag t4">$299</div>
+    <div class="content">
+      <div class="title-row">
+        <div class="tier-title">Ultimate Founder</div>
+        <div class="tier-icon">💎</div>
+      </div>
+      <div class="tag tag-t4">👑 Founding</div>
+      <p class="desc">For those who want the full founder experience and exclusive physical perks.</p>
+      <ul class="features-list">
+        <li>3-Year Full Access to the Neo-Game UI</li>
+        <li>All Core Features Included</li>
+        <li><span class="highlight">Name on Wall of Love 👑💎</span></li>
+        <li>3 Physical Thank-you Gifts</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>

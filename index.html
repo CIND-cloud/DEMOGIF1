@@ -1,44 +1,26 @@
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CIND Backer Tiers & Rewards</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+<!-- 👇 Backer Tiers & Rewards Section (黃色背景版) 👇 -->
 <style>
-  :root {
-    --yellow: #FFE156; 
-    --black: #0D0D0D; 
-    --grey-text: #64748B;
-    --card-bg: #FFFFFF;
-    
-    /* Tier Colors */
-    --tier1: #94A3B8; /* Grey */
-    --tier2: #F5D000; /* Gold */
-    --tier3: #FF8C00; /* Orange */
-    --tier4: #00E676; /* Green */
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  /* 黃色網格背景 */
-  body { 
-    font-family: 'Space Grotesk', system-ui, sans-serif; 
-    background-color: var(--yellow);
+  /* 呢個 Section 專屬嘅黃色網格背景 */
+  .tiers-section {
+    width: 100%;
+    background-color: var(--yellow, #FFE156);
     background-image:
       repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px),
       repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px);
-    padding: 50px 20px; 
-    display: flex; 
-    justify-content: center; 
-    min-height: 100vh;
-  }
-  
-  /* 👇 限制最大寬度為 520px，確保左右留白 */
-  .container { 
-    width: 100%; 
-    max-width: 520px; 
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    box-sizing: border-box;
   }
 
-  .header-title {
+  /* 限制內容最大寬度，確保左右留白 */
+  .tiers-container {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .tiers-header {
     text-align: center;
     font-size: 28px;
     font-weight: 800;
@@ -47,24 +29,24 @@
     background: #E0E7FF;
     padding: 15px;
     border-radius: 12px;
-    border: 3px solid var(--black);
-    box-shadow: 4px 4px 0 0 var(--black);
+    border: 3px solid var(--black, #0D0D0D);
+    box-shadow: 4px 4px 0 0 var(--black, #0D0D0D);
   }
 
-  .tier-card {
-    background: var(--card-bg);
+  .tiers-card {
+    background: #FFFFFF;
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
-    border: 3px solid var(--black);
-    box-shadow: 4px 4px 0 0 var(--black);
+    border: 3px solid var(--black, #0D0D0D);
+    box-shadow: 4px 4px 0 0 var(--black, #0D0D0D);
     display: flex;
     gap: 16px;
     position: relative;
+    text-align: left;
   }
 
-  /* 左邊價錢牌 */
-  .price-tag {
+  .tiers-price-tag {
     width: 70px;
     height: 36px;
     border-radius: 8px;
@@ -76,38 +58,37 @@
     color: #fff;
     flex-shrink: 0;
     margin-top: 4px;
-    border: 2px solid var(--black);
+    border: 2px solid var(--black, #0D0D0D);
   }
 
-  /* 唔同 Tier 嘅專屬顏色 */
-  .t1 { background: var(--tier1); color: var(--black); }
-  .t2 { background: var(--tier2); color: var(--black); }
-  .t3 { background: var(--tier3); color: var(--black); }
-  .t4 { background: var(--tier4); color: var(--black); }
+  .tiers-price-tag.t1 { background: #94A3B8; color: var(--black, #0D0D0D); }
+  .tiers-price-tag.t2 { background: #F5D000; color: var(--black, #0D0D0D); }
+  .tiers-price-tag.t3 { background: #FF8C00; color: var(--black, #0D0D0D); }
+  .tiers-price-tag.t4 { background: #00E676; color: var(--black, #0D0D0D); }
 
-  .content {
+  .tiers-content {
     flex: 1;
   }
 
-  .title-row {
+  .tiers-title-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 8px;
   }
 
-  .tier-title {
-    font-size: 20px; /* 稍微縮細少少以配合 520px 寬度 */
+  .tiers-title {
+    font-size: 20px;
     font-weight: 800;
     color: #1E293B;
   }
 
-  .tier-icon {
+  .tiers-icon {
     font-size: 30px;
     line-height: 1;
   }
 
-  .tag {
+  .tiers-tag {
     display: inline-block;
     padding: 2px 8px;
     font-size: 11px;
@@ -116,26 +97,28 @@
     border-radius: 4px;
     margin-bottom: 10px;
     letter-spacing: 0.5px;
-    border: 1.5px solid var(--black);
+    border: 1.5px solid var(--black, #0D0D0D);
   }
-  .tag-t1 { background: #F1F5F9; color: var(--black); }
-  .tag-t2 { background: #FEF9C3; color: var(--black); }
-  .tag-t3 { background: #FFEDD5; color: var(--black); }
-  .tag-t4 { background: #DCFCE7; color: var(--black); }
+  .tiers-tag.t1 { background: #F1F5F9; color: var(--black, #0D0D0D); }
+  .tiers-tag.t2 { background: #FEF9C3; color: var(--black, #0D0D0D); }
+  .tiers-tag.t3 { background: #FFEDD5; color: var(--black, #0D0D0D); }
+  .tiers-tag.t4 { background: #DCFCE7; color: var(--black, #0D0D0D); }
 
-  .desc {
+  .tiers-desc {
     font-size: 13.5px;
-    color: var(--grey-text);
+    color: #64748B;
     margin-bottom: 12px;
     line-height: 1.5;
     font-weight: 500;
   }
 
-  .features-list {
+  .tiers-list {
     list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
-  .features-list li {
+  .tiers-list li {
     font-size: 13.5px;
     color: #334155;
     margin-bottom: 8px;
@@ -146,7 +129,7 @@
     font-weight: 500;
   }
 
-  .features-list li::before {
+  .tiers-list li::before {
     content: '✔';
     color: #3B82F6;
     font-weight: 900;
@@ -154,97 +137,97 @@
     margin-top: 2px;
   }
 
-  .highlight {
+  .tiers-highlight {
     background: rgba(59, 130, 246, 0.1);
     padding: 4px 8px;
     border-radius: 6px;
     border-left: 3px solid #3B82F6;
   }
 </style>
-</head>
-<body>
 
-<div class="container">
-  <div class="header-title">Backer Tiers & Rewards</div>
+<!-- 外層包住黃色背景同網格 -->
+<div class="tiers-section">
+  <div class="tiers-container" id="backer-tiers">
+    
+    <div class="tiers-header">Backer Tiers & Rewards</div>
 
-  <!-- Tier 1: Early Bird -->
-  <div class="tier-card">
-    <div class="price-tag t1">$79</div>
-    <div class="content">
-      <div class="title-row">
-        <div class="tier-title">Early Bird</div>
-        <div class="tier-icon">⏰</div>
+    <!-- Tier 1 -->
+    <div class="tiers-card">
+      <div class="tiers-price-tag t1">$79</div>
+      <div class="tiers-content">
+        <div class="tiers-title-row">
+          <div class="tiers-title">Early Bird</div>
+          <div class="tiers-icon">⏰</div>
+        </div>
+        <div class="tiers-tag t1">⭐ Early Bird</div>
+        <p class="tiers-desc">Lock in the lowest price for a full year of CIND.</p>
+        <ul class="tiers-list">
+          <li>1-Year Full Access to the Neo-Game UI</li>
+          <li>Full Double-Entry Bookkeeping Engine</li>
+          <li>Local Data Ownership & Export</li>
+          <li><span class="tiers-highlight">Name on Supporter Wall 👑</span></li>
+          <li style="color: #94A3B8; font-style: italic;">(Digital Access Only)</li>
+        </ul>
       </div>
-      <div class="tag tag-t1">⭐ Early Bird</div>
-      <p class="desc">Lock in the lowest price for a full year of CIND.</p>
-      <ul class="features-list">
-        <li>1-Year Full Access to the Neo-Game UI</li>
-        <li>Full Double-Entry Bookkeeping Engine</li>
-        <li>Local Data Ownership & Export</li>
-        <li><span class="highlight">Name on Supporter Wall 👑</span></li>
-        <li style="color: #94A3B8; font-style: italic;">(Digital Access Only)</li>
-      </ul>
     </div>
-  </div>
 
-  <!-- Tier 2: Early Supporter -->
-  <div class="tier-card">
-    <div class="price-tag t2">$99</div>
-    <div class="content">
-      <div class="title-row">
-        <div class="tier-title">Early Supporter</div>
-        <div class="tier-icon">🚀</div>
+    <!-- Tier 2 -->
+    <div class="tiers-card">
+      <div class="tiers-price-tag t2">$99</div>
+      <div class="tiers-content">
+        <div class="tiers-title-row">
+          <div class="tiers-title">Early Supporter</div>
+          <div class="tiers-icon">🚀</div>
+        </div>
+        <div class="tiers-tag t2">🔥 Most Popular</div>
+        <p class="tiers-desc">The perfect choice for consistent bookkeeping.</p>
+        <ul class="tiers-list">
+          <li>1-Year Full Access to the Neo-Game UI</li>
+          <li>All Core Features Included</li>
+          <li><span class="tiers-highlight">Name on Supporter Wall 👑</span></li>
+          <li style="color: #94A3B8; font-style: italic;">(Digital Access Only)</li>
+        </ul>
       </div>
-      <div class="tag tag-t2">🔥 Most Popular</div>
-      <p class="desc">The perfect choice for consistent bookkeeping.</p>
-      <ul class="features-list">
-        <li>1-Year Full Access to the Neo-Game UI</li>
-        <li>All Core Features Included</li>
-        <li><span class="highlight">Name on Supporter Wall 👑</span></li>
-        <li style="color: #94A3B8; font-style: italic;">(Digital Access Only)</li>
-      </ul>
     </div>
-  </div>
 
-  <!-- Tier 3: Premium Backer -->
-  <div class="tier-card">
-    <div class="price-tag t3">$129</div>
-    <div class="content">
-      <div class="title-row">
-        <div class="tier-title">Premium Backer</div>
-        <div class="tier-icon">🪙</div>
+    <!-- Tier 3 -->
+    <div class="tiers-card">
+      <div class="tiers-price-tag t3">$129</div>
+      <div class="tiers-content">
+        <div class="tiers-title-row">
+          <div class="tiers-title">Premium Backer</div>
+          <div class="tiers-icon">🪙</div>
+        </div>
+        <div class="tiers-tag t3">💎 Best Value</div>
+        <p class="tiers-desc">Elevate your bookkeeping with exclusive physical rewards.</p>
+        <ul class="tiers-list">
+          <li>1-Year Full Access to the Neo-Game UI</li>
+          <li>All Core Features Included</li>
+          <li><span class="tiers-highlight">Name on Backer Wall 👑🪙</span></li>
+          <li>1 Physical Thank-you Gift</li>
+        </ul>
       </div>
-      <div class="tag tag-t3">💎 Best Value</div>
-      <p class="desc">Elevate your bookkeeping with exclusive physical rewards.</p>
-      <ul class="features-list">
-        <li>1-Year Full Access to the Neo-Game UI</li>
-        <li>All Core Features Included</li>
-        <li><span class="highlight">Name on Backer Wall 👑🪙</span></li>
-        <li>1 Physical Thank-you Gift</li>
-      </ul>
     </div>
-  </div>
 
-  <!-- Tier 4: Ultimate Founder -->
-  <div class="tier-card">
-    <div class="price-tag t4">$299</div>
-    <div class="content">
-      <div class="title-row">
-        <div class="tier-title">Ultimate Founder</div>
-        <div class="tier-icon">💎</div>
+    <!-- Tier 4 -->
+    <div class="tiers-card">
+      <div class="tiers-price-tag t4">$299</div>
+      <div class="tiers-content">
+        <div class="tiers-title-row">
+          <div class="tiers-title">Ultimate Founder</div>
+          <div class="tiers-icon">💎</div>
+        </div>
+        <div class="tiers-tag t4">👑 Founding</div>
+        <p class="tiers-desc">For those who want the full founder experience and exclusive physical perks.</p>
+        <ul class="tiers-list">
+          <li>3-Year Full Access to the Neo-Game UI</li>
+          <li>All Core Features Included</li>
+          <li><span class="tiers-highlight">Name on Wall of Love 👑💎</span></li>
+          <li>3 Physical Thank-you Gifts</li>
+        </ul>
       </div>
-      <div class="tag tag-t4">👑 Founding</div>
-      <p class="desc">For those who want the full founder experience and exclusive physical perks.</p>
-      <ul class="features-list">
-        <li>3-Year Full Access to the Neo-Game UI</li>
-        <li>All Core Features Included</li>
-        <li><span class="highlight">Name on Wall of Love 👑💎</span></li>
-        <li>3 Physical Thank-you Gifts</li>
-      </ul>
     </div>
-  </div>
 
+  </div>
 </div>
-
-</body>
-
+<!-- 👆 Backer Tiers & Rewards Section 完 👆 -->

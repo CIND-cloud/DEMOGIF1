@@ -1,13 +1,13 @@
-<!-- 👇 Backer Tiers & Rewards Section (黃色背景版) 👇 -->
+<!-- 👇 Backer Tiers & Rewards Section (黃色貼紙版) 👇 -->
 <style>
-  /* 呢個 Section 專屬嘅黃色網格背景 */
+  /* 外層：黃色網格背景，只留少少邊距 */
   .tiers-section {
     width: 100%;
     background-color: var(--yellow, #FFE156);
     background-image:
       repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px),
       repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px);
-    padding: 60px 20px;
+    padding: 40px 20px; /* 👈 上下 40px，左右 20px */
     display: flex;
     justify-content: center;
     font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -44,6 +44,10 @@
     gap: 16px;
     position: relative;
     text-align: left;
+  }
+
+  .tiers-card:last-child {
+    margin-bottom: 0; /* 最後一張卡取消底部邊距，令黃色邊框睇落更均勻 */
   }
 
   .tiers-price-tag {

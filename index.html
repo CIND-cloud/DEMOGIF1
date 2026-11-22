@@ -7,10 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F8FAFC; 
-    --card-bg: #FFFFFF;
+    --yellow: #FFE156; 
     --black: #0D0D0D; 
     --grey-text: #64748B;
+    --card-bg: #FFFFFF;
     
     /* Tier Colors */
     --tier1: #94A3B8; /* Grey */
@@ -20,18 +20,37 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Space Grotesk', system-ui, sans-serif; background: var(--bg); padding: 40px 20px; display: flex; justify-content: center; }
-  .container { width: 100%; max-width: 600px; }
+  
+  /* 黃色網格背景 */
+  body { 
+    font-family: 'Space Grotesk', system-ui, sans-serif; 
+    background-color: var(--yellow);
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px);
+    padding: 50px 20px; 
+    display: flex; 
+    justify-content: center; 
+    min-height: 100vh;
+  }
+  
+  /* 👇 限制最大寬度為 520px，確保左右留白 */
+  .container { 
+    width: 100%; 
+    max-width: 520px; 
+  }
 
   .header-title {
     text-align: center;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 800;
     color: #1E3A8A;
     margin-bottom: 30px;
     background: #E0E7FF;
     padding: 15px;
     border-radius: 12px;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 0 var(--black);
   }
 
   .tier-card {
@@ -39,8 +58,8 @@
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-    border: 1px solid #E2E8F0;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 0 var(--black);
     display: flex;
     gap: 16px;
     position: relative;
@@ -59,6 +78,7 @@
     color: #fff;
     flex-shrink: 0;
     margin-top: 4px;
+    border: 2px solid var(--black);
   }
 
   /* 唔同 Tier 嘅專屬顏色 */
@@ -79,14 +99,13 @@
   }
 
   .tier-title {
-    font-size: 22px;
+    font-size: 20px; /* 稍微縮細少少以配合 520px 寬度 */
     font-weight: 800;
     color: #1E293B;
   }
 
-  /* 右上角 Icon (靜態，無動畫) */
   .tier-icon {
-    font-size: 32px;
+    font-size: 30px;
     line-height: 1;
   }
 
@@ -99,14 +118,15 @@
     border-radius: 4px;
     margin-bottom: 10px;
     letter-spacing: 0.5px;
+    border: 1.5px solid var(--black);
   }
-  .tag-t1 { background: #F1F5F9; color: var(--black); border: 1px solid #CBD5E1; }
-  .tag-t2 { background: #FEF9C3; color: var(--black); border: 1px solid #FDE047; }
-  .tag-t3 { background: #FFEDD5; color: var(--black); border: 1px solid #FDBA74; }
-  .tag-t4 { background: #DCFCE7; color: var(--black); border: 1px solid #86EFAC; }
+  .tag-t1 { background: #F1F5F9; color: var(--black); }
+  .tag-t2 { background: #FEF9C3; color: var(--black); }
+  .tag-t3 { background: #FFEDD5; color: var(--black); }
+  .tag-t4 { background: #DCFCE7; color: var(--black); }
 
   .desc {
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--grey-text);
     margin-bottom: 12px;
     line-height: 1.5;
@@ -118,7 +138,7 @@
   }
 
   .features-list li {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #334155;
     margin-bottom: 8px;
     display: flex;
@@ -136,7 +156,6 @@
     margin-top: 2px;
   }
 
-  /* Include 特別嘅 Highlight 底色 */
   .highlight {
     background: rgba(59, 130, 246, 0.1);
     padding: 4px 8px;
